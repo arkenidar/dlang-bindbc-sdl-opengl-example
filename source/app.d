@@ -156,6 +156,8 @@ void main()
     glFlush();
     SDL_GL_SwapWindow(appWin);
 
+    bool show = false;
+
     // Polling for events
     bool quit = false;
     while(!quit) {
@@ -166,22 +168,22 @@ void main()
         glClearColor( 0f, 0f, 0f, 1f );
 
         // Render something
-        glBindTexture(GL_TEXTURE_2D, textureID);
+        glBindTexture(GL_TEXTURE_2D, show?textureID:0);
         glBegin( GL_QUADS );
           glColor3f(1.0f, 1.0f, 1.0f);
-          glTexCoord2f(0f, 0f);
+          glTexCoord2f(0f, 1f);
           glVertex2f( -0.5f, -0.5f );
 
           glColor3f(1.0f, 0.0f, 0.0f);
-          glTexCoord2f(1f, 0f);
+          glTexCoord2f(1f, 1f);
           glVertex2f( 0.5f, -0.5f );
 
           glColor3f(0.0f, 1.0f, 0.0f);
-          glTexCoord2f(1f, 1f);
+          glTexCoord2f(1f, 0f);
           glVertex2f( 0.5f, 0.5f );
 
           glColor3f(0.0f, 0.0f, 1.0f);
-          glTexCoord2f(0f, 1f);
+          glTexCoord2f(0f, 0f);
           glVertex2f( -0.5f, 0.5f );
         glEnd();
 
@@ -196,8 +198,11 @@ void main()
                 quit = true;
             }
 
-            if (event.type == SDL_KEYDOWN) {
-                quit = true;
+            if (event.type == SDL_KEYDOWN
+            && event.key.keysym.sym==SDLK_UP
+            ) {
+                //quit = true;
+                show=!show;
             }
         }
     }
