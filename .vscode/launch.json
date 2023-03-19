@@ -7,7 +7,7 @@
             "dubBuild": true,
             "name": "Build & Debug DUB project",
             "cwd": "${command:dubWorkingDirectory}",
-            "program": "bin/examplegl"
+            "program": "bin/${command:dubTarget}"
         }
     ]
 }
