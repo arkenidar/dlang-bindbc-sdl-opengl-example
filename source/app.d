@@ -73,7 +73,7 @@ void main()
         }
     }
     // Load image
-    SDL_Surface* imgSurf = IMG_Load("grumpy-cat.jpg");
+    SDL_Surface* imgSurf = IMG_Load("../assets/grumpy-cat.jpg");
     if (imgSurf is null) {
         writeln("IMG_Load: ", to!string(IMG_GetError()));
     }

@@ -6,8 +6,8 @@
             "request": "launch",
             "dubBuild": true,
             "name": "Build & Debug DUB project",
-            "cwd": "${command:dubWorkingDirectory}",
-            "program": "bin/${command:dubTarget}"
+            "cwd": "${command:dubWorkingDirectory}/bin",
+            "program": "${command:dubTarget}"
         }
     ]
 }
