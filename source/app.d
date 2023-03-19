@@ -162,7 +162,20 @@ void main()
     bool quit = false;
     while(!quit) {
         SDL_PumpEvents();
+        SDL_Event event;
+        while (SDL_PollEvent(&event)) {
+            if (event.type == SDL_QUIT) {
+                quit = true;
+            }
 
+            if (event.type == SDL_KEYDOWN
+            && event.key.keysym.sym==SDLK_UP
+            ) {
+                //quit = true;
+                show=!show;
+            }
+        }
+        
         // Cleaning buffers
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glClearColor( 0f, 0f, 0f, 1f );
@@ -192,19 +205,6 @@ void main()
         glFlush();
         SDL_GL_SwapWindow(appWin);
 
-        SDL_Event event;
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
-                quit = true;
-            }
-
-            if (event.type == SDL_KEYDOWN
-            && event.key.keysym.sym==SDLK_UP
-            ) {
-                //quit = true;
-                show=!show;
-            }
-        }
     }
 
 }
